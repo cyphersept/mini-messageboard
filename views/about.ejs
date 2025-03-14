@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Homepage</title>
+</head>
+
+<body>
+    <%- include('navbar', {links: links}) %>
+        <h1>About</h1>
+        <h2>Name: <%= name %>
+        </h2>
+        <p>
+            <%= message %>
+        </p>
+        <%- include('footer') %>
+</body>
+
+</html>

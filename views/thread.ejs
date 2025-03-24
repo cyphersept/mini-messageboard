@@ -1,0 +1,23 @@
+<article data-id="<%= thread.id %>">
+    <header>
+        <%- include('post-user', {icon: thread.poster.icon, name: thread.poster.name}) %>
+            <h2 class="post-title">
+                <%= thread.title %>
+            </h2>
+            <div class="date">
+                <%= thread.date %>
+            </div>
+    </header>
+    <div class="post-body">
+        <%= thread.body %>
+    </div>
+
+    <%- include('post-footer', { replyCount: thread.replies.length, likeCount: thread.likes.length, id: thread.id }) %>
+        <% if (fullView) { %>
+            <ul class="replies">
+                <% thread.replies.forEach(replyId=> { %>
+                    <%- include('post', { post: getPostById(replyId) }) %>
+                        <% }); %>
+            </ul>
+            <% } %>
+</article>

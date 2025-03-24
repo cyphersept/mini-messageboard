@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
-const authorRouter = require("./routes/authorRouter");
-const bookRouter = require("./routes/bookRouter");
+const threadRouter = require("./routes/threadRouter");
+const postRouter = require("./routes/postRouter");
 const indexRouter = require("./routes/indexRouter");
 const path = require("node:path");
 const PORT = process.env.PORT || 3000;
+
+app.set("trust proxy", "8.8.8.8");
 
 // Use views from ejs files in `views` folder
 app.set("views", path.join(__dirname, "views"));
@@ -14,9 +16,9 @@ app.set("view engine", "ejs");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
-app.use("/authors", authorRouter);
-app.use("/books", bookRouter);
-app.use("/", indexRouter);
+app.use("/", indexRouter); // Home and new
+app.use("/:threadId/replies/:postId", postRouter); // Individual replies
+app.use("/:threadId", threadRouter); // Show thread
 
 // 4 arguments denotes error handler
 app.use((err, req, res, next) => {
@@ -26,5 +28,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`My first Express app - listening on port ${PORT}!`);
+  console.log(`MiniBBS - listening on port ${PORT}!`);
 });

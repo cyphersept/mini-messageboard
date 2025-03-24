@@ -1,0 +1,11 @@
+<li class="post">
+    <header>
+        <%- include('post-user', {icon: post.poster.icon, name: post.poster.name}) %>
+            <div class="date">
+                <%= post.date %>
+            </div>
+    </header>
+    <div class="post-body">
+        <%= post.body %>
+    </div>
+</li>

@@ -1,19 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/styles.css">
-    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/styles.css">
+    <title>Mini BBS - Home</title>
 </head>
 
 <body>
     <%- include('navbar', {links: links}) %>
+        <h1>Home</h1>
         <ul>
-            <% users.forEach((user)=> { %>
-                <%- include('user', {user: user}); %>
+            <% threads.forEach((thread)=> { %>
+                <%- include('thread', {thread: thread, fullView: false}); %>
                     <% }); %>
         </ul>
-        <%= message %>
-            <%- include('footer') %>
+
+        <%- include('footer') %>
 </body>
 
 </html>

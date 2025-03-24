@@ -1,0 +1,30 @@
+- Make postId simple string from in-thread count
+- Make /threadId/replies/new route to new post page
+- Stretch: Handle long lists: additional pages? click to load more?
+
+==============
+Thread
+==============
+thread.id: text uuid for thread
+thread.poster.icon: url ref for icon of user who posted the thread
+thread.poster.name: text name of user who posted the thread
+thread.date: date object for when thread was posted
+thread.title: text title of first post of thread
+thread.body: text body of first post of thread
+thread.replies: array of posts made in reply to thread topic
+thread.likes: array of IP addresses that have liked the thread
+
+==============
+Post 
+==============
+getPostById(postId): object of post matching ID
+post.id: text uuid for post
+post.date:
+post.body: 
+post.likes: array of IP addresses that have liked this post
+post.poster.icon: url ref for icon of user who made the post
+post.poster.name: text name of user who made the post
+
+==============
+dataController
+==============

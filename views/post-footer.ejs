@@ -1,0 +1,26 @@
+// { replyCount: thread.replies.length, likeCount: thread.likeCount id:
+thread.id }
+
+<footer class="post-footer">
+    <div class="likes">
+        <!-- click: check if IP address liked before, send +1 to server -->
+        <button type="button">Like</button>
+        <span>
+            <%= likeCount %>
+        </span>
+    </div>
+    <div class="replies">
+        <button type="button">
+            <!-- click: go to route for create new reply to thread ID -->
+            <a href="/reply">Reply</a>
+        </button>
+        <span>
+            <%= replyCount %>
+        </span>
+    </div>
+    <div class="share">
+        <!-- click: copy current thread URL (+ page?) to clipboard -->
+        <button type="button">Share</button>
+        <span class="popup" hidden>Thread URL copied!</span>
+    </div>
+</footer>

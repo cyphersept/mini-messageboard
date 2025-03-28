@@ -14,18 +14,48 @@
     <%- include('header', {title: title }) %>
 
         <form action="" class="new">
-            <label>Title
-                <input type="text" name="title" id="title">
-            </label>
+
+            <button type="button">Cancel</button>
+
             <label>Name
                 <input type="text" name="name" id="name">
             </label>
-            <fieldset>
+            <fieldset class="avatars">
                 <legend>Avatar</legend>
-                <label>Avatar1
-                    <input type="text" name="avatar1" id="avatar1">
+                <label>
+                    <div>Avatar 1</div>
+                    <input type="radio" name="avatar" id="avatar1">
+                    <img src="" alt="" height="100px" width="100px">
+                </label>
+                <label>
+                    <div>Avatar 2</div>
+                    <input type="radio" name="avatar" id="avatar2">
+                    <img src="" alt="" height="100px" width="100px">
+                </label>
+                <label>
+                    <div>Avatar 3</div>
+                    <input type="radio" name="avatar" id="avatar3">
+                    <img src="" alt="" height="100px" width="100px">
+                </label>
+                <label>
+                    <div>Avatar 4</div>
+                    <input type="radio" name="avatar" id="avatar4">
+                    <img src="" alt="" height="100px" width="100px">
+                </label>
+                <label>
+                    <div>Avatar 5</div>
+                    <input type="radio" name="avatar" id="avatar5">
+                    <img src="" alt="" height="100px" width="100px">
+                </label>
+                <label>
+                    <div>Avatar 6</div>
+                    <input type="radio" name="avatar" id="avatar6">
+                    <img src="" alt="" height="100px" width="100px">
                 </label>
             </fieldset>
+            <label>Title
+                <input type="text" name="title" id="title">
+            </label>
             <label>Post Body
                 <textarea name="postBody" id="postBody"></textarea>
             </label>

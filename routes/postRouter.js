@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getPostById } = require("../posts");
+const { getPostById } = require("../controllers/postController");
 const postRouter = Router();
 
 // No controller version

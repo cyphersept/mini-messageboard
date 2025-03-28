@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getThreadById } = require("../threads");
+const { getThreadById } = require("../controllers/threadController");
 const postRouter = Router();
 
 postRouter.get("/:threadId", (req, res) => {

@@ -3,13 +3,20 @@ const postsPath = "../data/posts.json";
 const threadsPath = "../data/threads.json";
 
 // Load and parse JSON data
-async function readJson(path, cb) {
+async function readJson(path) {
   // https://goenning.net/blog/stop-reading-json-files-with-require/
   //   fs.readFileSync(require.resolve(path), (err, data) => {
   //     if (err) cb(err);
   //     else cb(null, JSON.parse(data));
   //   });
-  return JSON.parse(fs.readFile(path));
+  const content = fs.readFile(path, "utf8", (err, data) => data);
+  // Return parsed JSON if valid, else return false
+  if (!content) return false;
+  try {
+    return JSON.parse(content);
+  } catch (error) {
+    return false;
+  }
 }
 
 // Asynchronous: jsonify and save content to json file

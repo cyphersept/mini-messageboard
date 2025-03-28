@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>
+        Mini BBS - <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('header', {title: title }) %>
+
+        <form action="" class="new">
+            <label>Title
+                <input type="text" name="title" id="title">
+            </label>
+            <label>Name
+                <input type="text" name="name" id="name">
+            </label>
+            <fieldset>
+                <legend>Avatar</legend>
+                <label>Avatar1
+                    <input type="text" name="avatar1" id="avatar1">
+                </label>
+            </fieldset>
+            <label>Post Body
+                <textarea name="postBody" id="postBody"></textarea>
+            </label>
+            <input type="submit" value="Post">
+        </form>
+</body>
+
+</html>

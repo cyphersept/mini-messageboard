@@ -1,10 +1,8 @@
-const { nanoid } = require("nanoid");
+const { nanoid } = require("nano-id");
 const { readJson, writeJson } = require("./dataController");
 const asyncHandler = require("express-async-handler");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const postsPath = "../data/posts.json";
-
-const posts = [];
 
 const postFactory = (body, poster) => {
   const now = new Date();
@@ -13,7 +11,7 @@ const postFactory = (body, poster) => {
     name: poster.name || "Anonymous User",
   };
   const post = {
-    id: nanoid(),
+    id: nanoid(14),
     date: now.toDateString(),
     body: body,
     likes: [],
@@ -22,26 +20,19 @@ const postFactory = (body, poster) => {
   return post;
 };
 
+// Read up to date list of posts from JSON
 async function getPosts() {
-  return readJson(postsPath);
+  return readJson(postsPath) || [];
 }
 
-// Add new post; throw error if ID already taken
-async function addPost(post) {
-  const postList = await getPosts();
-  if (!searchPostId(post.id)) {
-    postList.push();
-  } else {
-    throw new Error(`Error: Post ID ${post.id} already exists`);
-  }
-
-  await writeJson(postsPath, postList);
-}
-
+// TO-DO: test if will loop until valid ID is generated
 async function createPost(body, poster) {
   const post = postFactory(body, poster);
-  addPost(post);
+
+  addPost(post).catch((err) => createPost(body, poster));
 }
+
+// Retrieve post object from matching ID
 async function searchPostId(postId) {
   const postList = await getPosts();
   return postList.find((post) => post.id === postId);
@@ -59,5 +50,17 @@ const getPostById = asyncHandler(async (req, res) => {
   }
   res.render("post", { post });
 });
+
+// Add new post; throw error if ID already taken
+async function addPost(post) {
+  const postList = await getPosts();
+  if (!searchPostId(post.id)) {
+    postList.push();
+  } else {
+    throw new Error(`Error: Post ID ${post.id} already exists`);
+  }
+
+  await writeJson(postsPath, postList);
+}
 
 module.exports = { getPostById, createPost };

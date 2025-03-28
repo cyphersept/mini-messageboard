@@ -1,6 +1,6 @@
 <div class="post-user">
-    <img src=<%=icon %> alt="" class="icon">
+    <img src=<%=icon || "./public/icon1.png" %> alt="" class="icon">
     <div class="name">
-        <%= name %>
+        <%= name || "Anonymous User" %>
     </div>
 </div>

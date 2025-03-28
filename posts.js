@@ -1,4 +1,4 @@
-const { nanoid } = require("nanoid");
+const { nanoid } = require("nano-id");
 
 const posts = [];
 
@@ -9,7 +9,7 @@ const postFactory = (body, poster) => {
     name: poster.name || "Anonymous User",
   };
   const post = {
-    id: nanoid(),
+    id: nanoid(14),
     date: now.toDateString(),
     body: body,
     likes: [],
